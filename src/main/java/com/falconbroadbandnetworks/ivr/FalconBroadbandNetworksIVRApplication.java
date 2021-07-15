@@ -10,9 +10,20 @@ import static spark.Spark.*;
 
 public class FalconBroadbandNetworksIVRApplication {
 
+	public static int getPort(){
+		int port = 8080;
 
+		String value = System.getenv("PORT");
+
+		if(value != null){
+			port = Integer.parseInt(value);
+		}
+		return port;
+	}
 
 	public static void main(String[] args) {
+
+		port(getPort());
 
 		WelcomeHandler welcomeHandler = new WelcomeHandler();
 		MainMenuHandler mainMenuHandler = new MainMenuHandler();
